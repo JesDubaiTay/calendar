@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://comissionsListView.title"
+      focusComponent="comissionsesDataGrid">
+    <data>
+        <collection id="comissionsesDc"
+                    class="com.company.calendar.entity.Comissions">
+            <fetchPlan extends="_base"/>
+            <loader id="comissionsesDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from cs_comissions e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="comissionsesDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createButton" action="comissionsesDataGrid.create"/>
+            <button id="editButton" action="comissionsesDataGrid.edit"/>
+            <button id="removeButton" action="comissionsesDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="comissionsesDl"/>
+        </hbox>
+        <dataGrid id="comissionsesDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="comissionsesDc"
+                  columnReorderingAllowed="true">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="name"/>
+                <column property="chairmanFullName"/>
+                <column property="headOfStaffFullName"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectButton" action="selectAction"/>
+            <button id="discardButton" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

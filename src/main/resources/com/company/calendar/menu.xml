@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/flowui/menu">
+
+    <menu id="application" title="msg://com.company.calendar/menu.application.title" opened="true">
+        <item view="cs_User.list" title="msg://com.company.calendar.view.user/UserListView.title"/>
+        <item id="cs_Parliamentary_Factions.list"
+              title="msg://com.company.calendar.view.parliamentary_factions/parliamentary_FactionsListView.title"
+              view="cs_Parliamentary_Factions.list"/>
+        <item view="cs_comissions.list" title="msg://com.company.calendar.view.comissions/comissionsListView.title"/>
+        <item view="cs_BookingCalendar.list"
+              title="msg://com.company.calendar.view.bookingcalendar/bookingCalendarListView.title"/>
+    </menu>
+
+</menu-config>

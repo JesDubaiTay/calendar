@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://bookingCalendarDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="bookingCalendarDc"
+                  class="com.company.calendar.entity.BookingCalendar">
+            <fetchPlan extends="_base">
+                <property name="hall"/>
+            </fetchPlan>
+            <loader id="bookingCalendarDl"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="bookingCalendarDc">
+            <responsiveSteps>
+                <responsiveStep minWidth="0" columns="1"/>
+                <responsiveStep minWidth="40em" columns="2"/>
+            </responsiveSteps>
+            <dateTimePicker id="bookingDateField" property="bookingDate"/>
+            <textField id="customerNameField" property="customerName"/>
+            <entityComboBox id="statusField" dataContainer="bookingCalendarDc" property="status" width="100%"/>
+            <entityComboBox id="hallField" dataContainer="bookingCalendarDc" property="hall" width="100%"/>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseButton" action="saveAction"/>
+            <button id="closeButton" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

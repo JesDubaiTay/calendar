@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="cs">
+        <createTable tableName="DF_CORRESPONDENT_ATTACHMENT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DF_CORRESPONDENT_ATTACHMENT"/>
+            </column>
+            <column name="CORRESPONDENT_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FILE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="VARCHAR(255)"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="cs">
+        <createTable tableName="DF_EMPLOYEE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DF_EMPLOYEE"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(50)"/>
+            <column name="CREATE_TS" type="DATETIME"/>
+            <column name="UPDATED_BY" type="VARCHAR(50)"/>
+            <column name="UPDATE_TS" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(50)"/>
+            <column name="DELETE_TS" type="DATETIME"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BIRTHDAY" type="DATE"/>
+            <column name="EDM_CERTIFICATE_THUMBPRINT" type="VARCHAR(255)"/>
+            <column name="LAST_NAME" type="VARCHAR(255)"/>
+            <column name="PERSONAL_DATA_ID" type="UUID"/>
+            <column name="HR_DATA_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NUMBER_" type="VARCHAR(50)"/>
+            <column name="DEF_EDM_POA_REG_ITEM_ID" type="UUID"/>
+            <column name="HAS_ATTACHMENTS" type="BOOLEAN"/>
+            <column name="FAX" type="VARCHAR(100)"/>
+            <column name="DEPARTMENT_ID" type="UUID"/>
+            <column name="EMAIL" type="VARCHAR(100)"/>
+            <column name="FACSIMILE_FILE_ID" type="UUID"/>
+            <column name="SEX" type="VARCHAR(255)"/>
+            <column name="DEF_POA_REG_ITEM_ID" type="UUID"/>
+            <column name="PHOTO_FILE_ID" type="UUID"/>
+            <column name="AVATAR_FILE_ID" type="UUID"/>
+            <column name="FIRST_NAME" type="VARCHAR(255)"/>
+            <column name="MOBILE_PHONE" type="VARCHAR(100)"/>
+            <column name="PHONE" type="VARCHAR(100)"/>
+            <column name="ORGANIZATION_ID" type="UUID"/>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="MIDDLE_NAME" type="VARCHAR(255)"/>
+            <column name="COMMENT_" type="VARCHAR(1000)"/>
+            <column name="POSITION_ID" type="UUID"/>
+            <column name="MOBILE_AVATAR_FILE_ID" type="UUID"/>
+            <column name="USER_ID" type="UUID"/>
+            <column name="personalDataId" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="cs">
+        <createTable tableName="DF_EMP_DEPT_POS_REL">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DF_EMP_DEPT_POS_REL"/>
+            </column>
+            <column name="EMPLOYEE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DEPARTMENT_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="POSITION_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="cs">
+        <createTable tableName="HR_DATA">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_HR_DATA"/>
+            </column>
+            <column name="EMPLOYEE_CODE" type="VARCHAR(255)"/>
+            <column name="POSITION" type="VARCHAR(255)"/>
+            <column name="DEPARTMENT" type="VARCHAR(255)"/>
+            <column name="SALARY" type="DOUBLE"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="cs">
+        <createTable tableName="ORGANIZATION_ATTACHMENT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ORGANIZATION_ATTACHMENT"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="cs">
+        <createTable tableName="PERSONAL_DATA">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PERSONAL_DATA"/>
+            </column>
+            <column name="FULL_NAME" type="VARCHAR(255)"/>
+            <column name="BIRTH_DATE" type="DATE"/>
+            <column name="GENDER" type="VARCHAR(255)"/>
+            <column name="ADDRESS" type="VARCHAR(255)"/>
+            <column name="PHONE_NUMBER" type="VARCHAR(255)"/>
+            <column name="EMAIL" type="VARCHAR(255)"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="7" author="cs">
+        <createTable tableName="SYS_FILE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SYS_FILE"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EXT" type="VARCHAR(20)"/>
+            <column name="FILE_SIZE" type="BIGINT"/>
+            <column name="CREATE_DATE" type="DATETIME"/>
+            <column name="STORAGE_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MIME_TYPE" type="VARCHAR(255)"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="8" author="cs">
+        <createTable tableName="TS_POWER_OF_ATTORNEY_REG_ITEM">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TS_POWER_OF_ATTORNEY_REG_ITEM"/>
+            </column>
+            <column name="REG_NUMBER" type="VARCHAR(255)"/>
+            <column name="ISSUE_DATE" type="DATE"/>
+            <column name="EXPIRY_DATE" type="DATE"/>
+            <column name="ISSUER" type="VARCHAR(255)"/>
+            <column name="NOTE" type="VARCHAR(255)"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="9" author="cs">
+        <createTable tableName="TS_USER_ADDITIONAL_INFO">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TS_USER_ADDITIONAL_INFO"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="10" author="cs">
+        <addForeignKeyConstraint baseColumnNames="CORRESPONDENT_ID" baseTableName="DF_CORRESPONDENT_ATTACHMENT"
+                                 constraintName="FK_DF_CORRESPONDENT_ATTACHMENT_ON_CORRESPONDENT"
+                                 referencedColumnNames="ID" referencedTableName="DF_EMPLOYEE"/>
+    </changeSet>
+    <changeSet id="11" author="cs">
+        <addForeignKeyConstraint baseColumnNames="FILE_ID" baseTableName="DF_CORRESPONDENT_ATTACHMENT"
+                                 constraintName="FK_DF_CORRESPONDENT_ATTACHMENT_ON_FILE" referencedColumnNames="ID"
+                                 referencedTableName="SYS_FILE"/>
+    </changeSet>
+    <changeSet id="12" author="cs">
+        <addForeignKeyConstraint baseColumnNames="AVATAR_FILE_ID" baseTableName="DF_EMPLOYEE"
+                                 constraintName="FK_DF_EMPLOYEE_ON_AVATAR_FILE" referencedColumnNames="ID"
+                                 referencedTableName="SYS_FILE"/>
+    </changeSet>
+    <changeSet id="13" author="cs">
+        <addForeignKeyConstraint baseColumnNames="DEF_EDM_POA_REG_ITEM_ID" baseTableName="DF_EMPLOYEE"
+                                 constraintName="FK_DF_EMPLOYEE_ON_DEF_EDM_POA_REG_ITEM" referencedColumnNames="ID"
+                                 referencedTableName="TS_POWER_OF_ATTORNEY_REG_ITEM"/>
+    </changeSet>
+    <changeSet id="14" author="cs">
+        <addForeignKeyConstraint baseColumnNames="DEF_POA_REG_ITEM_ID" baseTableName="DF_EMPLOYEE"
+                                 constraintName="FK_DF_EMPLOYEE_ON_DEF_POA_REG_ITEM" referencedColumnNames="ID"
+                                 referencedTableName="TS_POWER_OF_ATTORNEY_REG_ITEM"/>
+    </changeSet>
+    <changeSet id="15" author="cs">
+        <addForeignKeyConstraint baseColumnNames="DEPARTMENT_ID" baseTableName="DF_EMPLOYEE"
+                                 constraintName="FK_DF_EMPLOYEE_ON_DEPARTMENT" referencedColumnNames="ID"
+                                 referencedTableName="DF_DEPARTMENT"/>
+    </changeSet>
+    <changeSet id="16" author="cs">
+        <addForeignKeyConstraint baseColumnNames="FACSIMILE_FILE_ID" baseTableName="DF_EMPLOYEE"
+                                 constraintName="FK_DF_EMPLOYEE_ON_FACSIMILE_FILE" referencedColumnNames="ID"
+                                 referencedTableName="SYS_FILE"/>
+    </changeSet>
+    <changeSet id="17" author="cs">
+        <addForeignKeyConstraint baseColumnNames="HR_DATA_ID" baseTableName="DF_EMPLOYEE"
+                                 constraintName="FK_DF_EMPLOYEE_ON_HR_DATA" referencedColumnNames="ID"
+                                 referencedTableName="HR_DATA"/>
+    </changeSet>
+    <changeSet id="18" author="cs">
+        <addForeignKeyConstraint baseColumnNames="MOBILE_AVATAR_FILE_ID" baseTableName="DF_EMPLOYEE"
+                                 constraintName="FK_DF_EMPLOYEE_ON_MOBILE_AVATAR_FILE" referencedColumnNames="ID"
+                                 referencedTableName="SYS_FILE"/>
+    </changeSet>
+    <changeSet id="19" author="cs">
+        <addForeignKeyConstraint baseColumnNames="ORGANIZATION_ID" baseTableName="DF_EMPLOYEE"
+                                 constraintName="FK_DF_EMPLOYEE_ON_ORGANIZATION" referencedColumnNames="ID"
+                                 referencedTableName="DF_ORGANIZATION"/>
+    </changeSet>
+    <changeSet id="20" author="cs">
+        <addForeignKeyConstraint baseColumnNames="PERSONAL_DATA_ID" baseTableName="DF_EMPLOYEE"
+                                 constraintName="FK_DF_EMPLOYEE_ON_PERSONAL_DATA" referencedColumnNames="ID"
+                                 referencedTableName="PERSONAL_DATA"/>
+    </changeSet>
+    <changeSet id="21" author="cs">
+        <addForeignKeyConstraint baseColumnNames="PHOTO_FILE_ID" baseTableName="DF_EMPLOYEE"
+                                 constraintName="FK_DF_EMPLOYEE_ON_PHOTO_FILE" referencedColumnNames="ID"
+                                 referencedTableName="SYS_FILE"/>
+    </changeSet>
+    <changeSet id="22" author="cs">
+        <addForeignKeyConstraint baseColumnNames="POSITION_ID" baseTableName="DF_EMPLOYEE"
+                                 constraintName="FK_DF_EMPLOYEE_ON_POSITION" referencedColumnNames="ID"
+                                 referencedTableName="DF_POSITION"/>
+    </changeSet>
+    <changeSet id="23" author="cs">
+        <addForeignKeyConstraint baseColumnNames="USER_ID" baseTableName="DF_EMPLOYEE"
+                                 constraintName="FK_DF_EMPLOYEE_ON_USER" referencedColumnNames="ID"
+                                 referencedTableName="SEC_USER"/>
+    </changeSet>
+    <changeSet id="24" author="cs">
+        <addForeignKeyConstraint baseColumnNames="DEPARTMENT_ID" baseTableName="DF_EMP_DEPT_POS_REL"
+                                 constraintName="FK_DF_EMP_DEPT_POS_REL_ON_DEPARTMENT" referencedColumnNames="ID"
+                                 referencedTableName="DF_DEPARTMENT"/>
+    </changeSet>
+    <changeSet id="25" author="cs">
+        <addForeignKeyConstraint baseColumnNames="EMPLOYEE_ID" baseTableName="DF_EMP_DEPT_POS_REL"
+                                 constraintName="FK_DF_EMP_DEPT_POS_REL_ON_EMPLOYEE" referencedColumnNames="ID"
+                                 referencedTableName="DF_EMPLOYEE"/>
+    </changeSet>
+    <changeSet id="26" author="cs">
+        <addForeignKeyConstraint baseColumnNames="POSITION_ID" baseTableName="DF_EMP_DEPT_POS_REL"
+                                 constraintName="FK_DF_EMP_DEPT_POS_REL_ON_POSITION" referencedColumnNames="ID"
+                                 referencedTableName="DF_POSITION"/>
+    </changeSet>
+</databaseChangeLog>
