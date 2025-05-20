@@ -11,7 +11,6 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "TS_USER_ADDITIONAL_INFO")
-@Entity
 public class TsUserAdditionalInfo {
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)

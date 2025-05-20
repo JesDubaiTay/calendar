@@ -11,7 +11,6 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "ORGANIZATION_ATTACHMENT")
-@Entity
 public class OrganizationAttachment {
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)

@@ -8,7 +8,6 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "DF_CORRESPONDENT_ATTACHMENT") // Замените на фактическое имя вашей таблицы
-@Entity(name = "CorrespondentAttachment")
 public class CorrespondentAttachment {
 
     @JmixGeneratedValue

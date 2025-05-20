@@ -5,15 +5,16 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import io.jmix.core.metamodel.annotation.InstanceName;
 
+import java.util.UUID;
+
 @JmixEntity
 @Table(name = "CS_PARLIAMENTARY_FACTIONS")
-@Entity(name = "cs_Parliamentary_Factions")
 public class Parliamentary_Factions {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PL_ID", nullable = false)
-    private Long id;
+    private UUID id;
 
     @Column(name = "PL_NAME", nullable = false)
     @InstanceName
@@ -23,11 +24,11 @@ public class Parliamentary_Factions {
     @Column(name = "FACTION_LEADER", nullable = false)
     private String factionLeader;
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 

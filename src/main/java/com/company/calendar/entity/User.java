@@ -26,7 +26,6 @@ import java.util.List;
 
 @JmixEntity
 @Table(name = "SEC_USER")
-@Entity(name = "tm_User")
 public class User implements HasTimeZone, UserDetails {
 
     @JmixGeneratedValue
@@ -379,5 +378,8 @@ public class User implements HasTimeZone, UserDetails {
 
     public void setAuthorities(Collection<GrantedAuthority> authorities) {
         this.authorities = authorities;
+    }
+
+    public void setUsername(String s) {
     }
 }

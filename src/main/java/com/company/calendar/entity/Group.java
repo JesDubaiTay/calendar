@@ -9,7 +9,6 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "SEC_GROUP")
-@Entity(name = "calendar_Group")
 public class Group {
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)

@@ -8,7 +8,7 @@ import io.jmix.flowui.view.StandardDetailView;
 import io.jmix.flowui.view.ViewController;
 import io.jmix.flowui.view.ViewDescriptor;
 
-@Route(value = "parliamentary_Factionses/:id", layout = MainView.class)
+@Route(value = "Parliamentary_Factions/:id", layout = MainView.class)
 @ViewController(id = "cs_Parliamentary_Factions.detail")
 @ViewDescriptor(path = "parliamentary_factions-detail-view.xml")
 @EditedEntityContainer("parliamentary_FactionsDc")

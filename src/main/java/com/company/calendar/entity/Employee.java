@@ -2,10 +2,8 @@ package com.company.calendar.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.JmixEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import io.jmix.core.metamodel.annotation.InstanceName;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -13,8 +11,6 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-import io.jmix.core.metamodel.annotation.InstanceName;
-import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -23,8 +19,13 @@ import jakarta.persistence.TemporalType;
 
 @JmixEntity
 @Table(name = "DF_EMPLOYEE")
-@Entity(name = "df_Employee")
 public class Employee {
+
+    private static final int STRING_LENGTH_50 = 50;
+    private static final int STRING_LENGTH_100 = 100;
+    private static final int STRING_LENGTH_255 = 255;
+    private static final int STRING_LENGTH_1000 = 1000;
+
 
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
@@ -32,7 +33,7 @@ public class Employee {
     private UUID id;
 
     @CreatedBy
-    @Column(name = "CREATED_BY", length = 50)
+    @Column(name = "CREATED_BY", length = STRING_LENGTH_50)
     private String createdBy;
 
     @CreatedDate
@@ -41,7 +42,7 @@ public class Employee {
     private Date createTs;
 
     @LastModifiedBy
-    @Column(name = "UPDATED_BY", length = 50)
+    @Column(name = "UPDATED_BY", length = STRING_LENGTH_50)
     private String updatedBy;
 
     @LastModifiedDate
@@ -49,7 +50,7 @@ public class Employee {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateTs;
 
-    @Column(name = "DELETED_BY", length = 50)
+    @Column(name = "DELETED_BY", length = STRING_LENGTH_50)
     private String deletedBy;
 
     @Column(name = "DELETE_TS")
@@ -65,11 +66,11 @@ public class Employee {
     private Date birthday;
 
     @Column(name = "EDM_CERTIFICATE_THUMBPRINT")
-    @Size(max = 255)
+    @Size(max = STRING_LENGTH_255)
     private String emdCertificateThumbprint;
 
     @Column(name = "LAST_NAME")
-    @Size(max = 255)
+    @Size(max = STRING_LENGTH_255)
     @NotNull
     private String lastName;
 
@@ -82,12 +83,12 @@ public class Employee {
     private HrData hrData;
 
     @JoinTable(name = "TS_POWER_OF_ATTORNEY_REG_ITEM",
-    joinColumns = @JoinColumn(name = "EMPLOYEE_ID"),
-    inverseJoinColumns = @JoinColumn(name = "POWEROFATTORNEYREGITEM_ID"))
+            joinColumns = @JoinColumn(name = "EMPLOYEE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "POWEROFATTORNEYREGITEM_ID"))
     @ManyToMany
     private List<PowerOfAttorneyRegItem> powerOfAttorneyList;
 
-    @Column(name = "NUMBER_", length = 50)
+    @Column(name = "NUMBER_", length = STRING_LENGTH_50)
     private String number;
 
     @OneToMany(mappedBy = "employee")
@@ -100,7 +101,7 @@ public class Employee {
     @Column(name = "HAS_ATTACHMENTS")
     private Boolean hasAttachments;
 
-    @Column(name = "FAX", length = 100)
+    @Column(name = "FAX", length = STRING_LENGTH_100)
     private String fax;
 
     @JoinColumn(name = "DEPARTMENT_ID")
@@ -108,7 +109,7 @@ public class Employee {
     private Department department;
 
     @Email
-    @Column(name = "EMAIL", length = 100)
+    @Column(name = "EMAIL", length = STRING_LENGTH_100)
     private String email;
 
     @JoinColumn(name = "FACSIMILE_FILE_ID")
@@ -131,14 +132,14 @@ public class Employee {
     private FileDescriptor avatar;
 
     @Column(name = "FIRST_NAME")
-    @Size(max = 255)
+    @Size(max = STRING_LENGTH_255)
     @NotNull
     private String firstName;
 
-    @Column(name = "MOBILE_PHONE", length = 100)
+    @Column(name = "MOBILE_PHONE", length = STRING_LENGTH_100)
     private String mobilePhone;
 
-    @Column(name = "PHONE", length = 100)
+    @Column(name = "PHONE", length = STRING_LENGTH_100)
     private String phone;
 
     @JoinColumn(name = "ORGANIZATION_ID")
@@ -147,14 +148,14 @@ public class Employee {
 
     @InstanceName
     @Column(name = "NAME")
-    @Size(max = 255)
+    @Size(max = STRING_LENGTH_255)
     private String name;
 
     @Column(name = "MIDDLE_NAME")
-    @Size(max = 255)
+    @Size(max = STRING_LENGTH_255)
     private String middleName;
 
-    @Column(name = "COMMENT_", length = 1000)
+    @Column(name = "COMMENT_", length = STRING_LENGTH_1000)
     private String comment;
 
     @JoinColumn(name = "POSITION_ID")
@@ -169,12 +170,17 @@ public class Employee {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @OneToMany (mappedBy = "correspondent")
-    private List<CorrespondentAttachment>
-    correspondentAttachments;
-    private UUID personalDataId;
+    @OneToMany(mappedBy = "correspondent")
+    private List<CorrespondentAttachment> correspondentAttachments;
 
-    public void setCorrespondentAttachments(List<CorrespondentAttachment>correspondentAttachments){
+    // УДАЛИТЬ ЭТО ПОЛЕ, ЕСЛИ ОНО НЕ НУЖНО
+    //private UUID personalDataId;
+
+    public List<CorrespondentAttachment> getCorrespondentAttachments() {
+        return correspondentAttachments;
+    }
+
+    public void setCorrespondentAttachments(List<CorrespondentAttachment> correspondentAttachments) {
         this.correspondentAttachments = correspondentAttachments;
     }
 
@@ -307,14 +313,6 @@ public class Employee {
         this.facsimile = facsimile;
     }
 
-    public CorrespondentAttachment getCorrespondentAttachments() {
-        return null;
-    }
-
-    public void setCorrespondentAttachments(CorrespondentAttachment correspondentAttachments) {
-        this.correspondentAttachments = (List<CorrespondentAttachment>) correspondentAttachments;
-    }
-
     public String getUpdatedBy() {
         return updatedBy;
     }
@@ -323,14 +321,14 @@ public class Employee {
         this.updatedBy = updatedBy;
     }
 
-    public UUID getPersonalDataId() {
-        UUID personalDataId = null;
+    //УДАЛИТЬ ЭТОТ МЕТОД, ЕСЛИ УДАЛЕНО ПОЛЕ personalDataId
+   /* public UUID getPersonalDataId() {
         return personalDataId;
     }
 
     public void setPersonalDataId(UUID personalDataId) {
         this.personalDataId = personalDataId;
-    }
+    }*/
 
     public String getEmail() {
         return email;

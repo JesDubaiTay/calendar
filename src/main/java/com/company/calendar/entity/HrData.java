@@ -9,8 +9,7 @@ import jakarta.validation.constraints.Size;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "HR_DATA") // Замените на имя вашей таблицы, если она отличается
-@Entity(name = "HrData")
+@Table(name = "HR_DATA")
 public class HrData {
 
     @JmixGeneratedValue

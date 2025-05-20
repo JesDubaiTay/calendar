@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Entity(name = "Department")
 @Table(name = "DF_DEPARTMENT")
 public class Department {
 

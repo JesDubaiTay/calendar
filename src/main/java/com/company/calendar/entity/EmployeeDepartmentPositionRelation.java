@@ -6,8 +6,7 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "DF_EMP_DEPT_POS_REL") // Замените на фактическое имя вашей таблицы
-@Entity(name = "EmployeeDepartmentPositionRelation")
+@Table(name = "DF_EMP_DEPT_POS_REL")
 public class EmployeeDepartmentPositionRelation {
 
     @JmixGeneratedValue

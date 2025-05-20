@@ -10,20 +10,19 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "CS_BOOKING_CALENDAR")
-@Entity(name = "cs_BookingCalendar")
 public class BookingCalendar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "ID")
     private Long id;
 
-    @Column(name = "booking_date")
+    @Column(name = "BOOKING_DATE")
     private LocalDateTime bookingDate;
 
-    @Column(name = "customer_name")
+    @Column(name = "CUSTOMER_NAME")
     private String customerName;
 
-    @Column(name = "status")
+    @Column(name = "STATUS")
     @Enumerated(EnumType.STRING)
     private Status status;
 

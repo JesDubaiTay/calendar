@@ -10,8 +10,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "TS_POWER_OF_ATTORNEY_REG_ITEM") // Замените на имя вашей таблицы, если она отличается
-@Entity(name = "PowerOfAttorneyRegItem")
+@Table(name = "TS_POWER_OF_ATTORNEY_REG_ITEM")
 public class PowerOfAttorneyRegItem {
 
     @JmixGeneratedValue

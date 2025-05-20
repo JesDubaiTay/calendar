@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Entity(name = "Organization")
 @Table(name = "DF_ORGANIZATION")
 public class Organization {
 

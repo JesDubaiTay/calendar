@@ -11,8 +11,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "PERSONAL_DATA") // Замените на имя вашей таблицы, если она отличается
-@Entity(name = "PersonalData")
+@Table(name = "PERSONAL_DATA")
 public class PersonalData {
 
     @JmixGeneratedValue

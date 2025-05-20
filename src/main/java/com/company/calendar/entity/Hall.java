@@ -9,13 +9,12 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "CS_HALL")
-@Entity
 public class Hall {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "HALL_ID")
-    private Long id; // Идентификатор зала
+    private UUID id; // Идентификатор зала
 
     @Column(name = "HALL_NAME", nullable = false)
     private String name;
@@ -37,11 +36,11 @@ public class Hall {
     }
 
     // Геттеры и сеттеры
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

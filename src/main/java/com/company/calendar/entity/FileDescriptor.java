@@ -10,8 +10,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "SYS_FILE") // Jmix использует SYS_FILE, но переименуйте, если у вас другое имя
-@Entity(name = "FileDescriptor")
+@Table(name = "SYS_FILE")
 public class FileDescriptor {
 
     @JmixGeneratedValue

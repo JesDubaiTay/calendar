@@ -4,15 +4,15 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import java.util.Objects;
+import java.util.UUID;
 
 @JmixEntity
-@Entity(name = "cs_comissions")
 @Table(name = "comissions")
 public class Comissions {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private UUID id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -32,11 +32,11 @@ public class Comissions {
         this.headOfStaffFullName = headOfStaffFullName;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

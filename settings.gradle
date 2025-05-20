@@ -1,1 +1,19 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral() // Обязательно добавьте этот репозиторий
+        maven { url = "https://global.repo.jmix.io/repository/public" }
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.namespace == "io.jmix") {
+                useModule("io.jmix:jmix-gradle-plugin:${requested.version}")
+            }
+        }
+    }
+    plugins {
+        id("io.jmix") version "2.5.1"
+        id("org.springframework.boot") version "3.1.0" // или более поздняя версия 3.x
+    }
+}
 rootProject.name = 'calendar'
