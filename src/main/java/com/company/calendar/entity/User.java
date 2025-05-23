@@ -342,7 +342,7 @@ public class User implements HasTimeZone, UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Временная реализация:  Замените на вашу логику получения ролей
+        // Временная реализация:Замените на вашу логику получения ролей
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 

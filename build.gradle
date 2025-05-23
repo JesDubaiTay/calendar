@@ -2,11 +2,12 @@ plugins {
     id 'io.jmix' version '2.5.1'
     id 'java'
     id 'org.jetbrains.gradle.plugin.idea-ext' version '1.1.9'
-    id("org.springframework.boot") version "3.1.0"
+    //id("org.springframework.boot") version "3.1.0"
     id("com.vaadin") version "24.3.8"
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-apply plugin: 'org.springframework.boot'
+//apply plugin: 'org.springframework.boot'
 apply plugin: 'com.vaadin'
 
 jmix {
@@ -37,6 +38,7 @@ dependencies {
     implementation 'io.jmix.datatools:jmix-datatools-starter'
     implementation 'io.jmix.datatools:jmix-datatools-flowui-starter'
     annotationProcessor 'io.jmix.core:jmix-core:2.5.1'
+    implementation("io.jmix.core:jmix-core:2.5.1")
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation("org.postgresql:postgresql:42.7.5")
 
@@ -56,9 +58,9 @@ configurations.implementation {
     exclude group: 'com.vaadin', module: 'copilot'
 }
 
-test {
-    useJUnitPlatform()
-}
+//test {
+  //  useJUnitPlatform()
+//}
 
 idea {
     module {
@@ -69,3 +71,12 @@ idea {
 vaadin {
     optimizeBundle = false
 }
+shadowJar {
+    mergeServiceFiles()
+    manifest {
+        attributes(
+                'Main-Class': 'com.company.calendar.CalendarApplication'
+        )
+    }
+}
+
